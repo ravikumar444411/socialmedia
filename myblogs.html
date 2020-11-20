@@ -1,0 +1,125 @@
+<!-----After Blog Post Area -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="js/index.js"></script>
+
+
+<div class="row container-fluid bg-3">
+    <div class="col-sm-12" id="myblogSection">
+
+    </div>
+
+    <div  id="comment_box">
+
+    </div>
+
+</div>
+<br>
+<script>
+    fetchComment();
+</script>
+<!-----After Blog Post Area Ends Here-->
+
+
+<!-----validation & uploading of post blogs-->
+
+<script>
+// *******Upload & save to firebase database & storage
+
+var user = firebase.auth().currentUser;     //get object of user information
+console.log(user.uid, 'this is myblogs page')
+dbBlogs = firebase.database().ref().child("Blogs").orderByChild("uid").equalTo(user.uid);   //retrieve data from database with specific user ID
+//console.log(dbBlogs);
+dbBlogs.on("value",function(blogs)
+{
+            if(blogs.exists())
+                {
+                var blogsHtml;
+                blogs.forEach(function(singleBlog)
+                {
+                 //   console.log(singleBlog.val())
+                blogsHtml += `<div class="card mb-3 ">
+                    <div class="card-header" id="headerArea">
+                        
+                        <div class="row">
+                      <div class="col-sm-1 "> <img  src=${singleBlog.val().profileImg} style="width:40px; height:40px; border-radius: 50% "/></div>
+                    <div class="col-sm h4 ml-2 text-parimary" ` + " onclick=goToProfile('"+singleBlog.val().uid+"')> "
+          +`         ${singleBlog.val().postBy}  </div> <div class="col-sm-1"> 
+                        
+                        <i class="fas fa-chevron-down"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Share</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Share to </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item"  ` + " onclick=deleteblogRecord('"+singleBlog.key+"')>Remove</a>"
+                 +`       </div> 
+                        </div>
+                        </div>
+                        </div>
+                    
+                    
+                    ${frame(singleBlog.val().type, singleBlog.val().image)}
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <a href=${singleBlog.val().image} download><i class="fas fa-download text-primary h3 mt-1"></i></a>
+                                     </div>
+                                    <div class="col-sm">
+                                    Date: ${singleBlog.val().date} , time:  ${singleBlog.val().time}
+                                    </div>
+                                    <div class="col-sm">
+                                    One of three columns
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text"> ${singleBlog.val().desc}</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+
+                            <i class="fas fa-heart h2 "  id="likebutton"  `  + " onclick=likeHandle('"+singleBlog.key+"')></i>"
+            +`   <div class="form-group  row">
+        
+                        <input type="text" class="form-control col-lg-9 col-sm-8 col-8  ml-3 mr-1" id="comment" placeholder="Comment here .....">
+                    
+                        <button type="submit" class='btn btn-primary col-lg-2 col-sm-2 col-2 mr-3 ' `  + " onclick=postComment('"+singleBlog.key+"')> <i class='fas fa-search'></i></button></div> </div>"
+                        });
+                        console.log(blogsHtml)
+                
+                $("#myblogSection").html(blogsHtml);
+     }
+});
+ 
+
+
+
+
+
+function frame(type, url)
+{
+    if(type == 'image/jpeg')
+       return  ` <img src=${url} class="card-img-top" alt="..."/>`;
+    else if(type == 'video/mp4')
+      return   `<video class="card-img-top"  controls ><source src=${url}  type="video/mp4"></video> `
+}
+
+
+
+// const getProfile = (userid) =>{
+//   var  getuserid = firebase.database().ref().child("Users").orderByKey().equalTo(userid); 
+//     var imageURL = "";
+//             getuserid.on("value",function(blogs)
+//             {
+//                imageURL += blogs.val()[userid].image;         
+//             });
+//             return imageURL;
+// }
+
+//**************End - Retrieve & display data
+
+function liketest(){
+    $("#likebutton").css({"color": "black"}); 
+}
+
+</script>
+
+

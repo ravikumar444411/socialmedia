@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/anim.css">
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+   <link rel="preload" as="font"  href="css/font-awesome.min.css" crossorigin="anonymous">
+   <!--script src="https://code.jquery.com/jquery-1.12.4.min.js"></script->
+   <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script-->
+<script src="js/slick.js"></script>
+<!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script-->
+<!--link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"-->
+
+  <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"-->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <style>
+     
+  	 @media screen and (min-width: 600px) {
+     
+     .containerM{
+      display:none;
+     }
+	 
+     }
+@media screen and (max-width: 600px) {
+.containerD{
+display:block;
+}
+nav#menu {
+  display: none;
+}
+.containerM ul li {
+		margin: 0px;
+		z-index: 300;
+		display: block;
+		padding: 10px;
+		float:inherit;
+}
+.containerM button{
+	float:right !important;
+} 
+.containerM .logo{
+	float:left !important;
+	width:100px;
+	height:100px;
+}
+.containerM .dropdown-content{
+	 width:100%;
+}
+.container.containerM{
+   padding: 0px;
+ }
+   }
+  </style>
+
+</head>
+<body>
+   <section class="upper-one" style="    height: auto;">
+   	   <div id="wrapper">
+   	   	<div id="Header_wrapper">
+   	   		<header id="Header">
+   	   			<div id="tob-bar" class="clearheader">
+                 <div class="container-fluid" style="background-color:green; color:#fff;padding: 10px;">
+                  <div class="container" >
+                    <div class="row">
+                      <div class="col-lg-3" style="text-align: center;"><!--p style="margin-left: 0px; margin-top:0px; color:#FFF; background-color:green; "--><?include("vistor.php"); ?></div>
+                        <div class="col-lg-4" style="text-align: center;"><span style="color:#fff;padding:5px;"> <i class="fa fa-phone" style="padding-right: 6px;"></i>
+                        Contact Us :<a href="tel:8076298926" style="color:#fff;"> +91 8076298926</a> 
+                        <a href="tel:01204565040"style="color:#fff;">,  01204565040  </a>  </span>
+                        </div>
+                        <div class="col-lg-5" style="text-align: center;"><span style="color:#fff; padding:5px; "> 
+                        <i class="fa fa-envelope" style="padding-right: 6px;"></i>Email Id: <a href="mailto:contact@citiyanode.com" style="color:#fff;">contact@citiyanode.com</a> <!-- ,<a href="mailto:citiyano.de@gmail.com" style="color:#fff;">citiyano.de@gmail.com</a> --> </span></div>
+                        <!--  <div class="col-lg-3">
+                             <div  class="ssdaa">
+                              <a href="images/Final sDocument.pdf">Project Report PMC for Swachh Survekshan</a>
+                             </div>
+                        </div> -->
+                    </div>
+                  </div>
+                 </div>
+   	   				<div class="container containerD">
+   	   					<div class="column one">
+   	   						<div class="top_bar_left clearfix" >
+							    
+   	   							<div class="logo">
+   	   								<a id="logo" href="index.php"><img src="images/logo-citiy.png" ></a>
+   	   							</div>
+   	   							<div class="menu_wrapper">
+   	   								<nav id="menu">
+   	   									<ul id="menu-main-menu" class="menu menu-main">
+   	   										<li id="menu-item-6" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item">
+   	   											<a href="index.php">
+   	   												<span>Home</span>
+   	   											</a>
+   	   										</li>
+   	   										<li id="menu-item-2302" class="menu-item menu-item-type-post_type menu-item-object-page">
+   	   											<a href="about_us.php">
+   	   												<span>Who we are</span>
+   	   											</a>
+   	   										</li>
+   	   									
+   	   										<li id="menu-item-2300" class="dropdown menu-item menu-item-type-post_type menu-item-object-page last">
+   	   											<a href="#">
+   	   												<span class="dropbtn" style="background: none;">What we do</span>
+   	   											</a>
+                              <ul class=" dropdown-content" role="menu" aria-labelledby="dropdownMenu">
+                                  <li class="dropdown-submenu">
+                                     <a tabindex="-1" href="Urban-planning-and-infrastructure-development.php">Urban planning and Infrastructure Development</a>  
+                                  </li>
+                                  <li class="dropdown-submenu" >
+                                     <a tabindex="-1" href="Environmental-and-climate-change.php">Environmental and climate Changes </a>
+                                  </li>
+                                  <li class="dropdown-submenu" >
+                                     <a tabindex="-1" href="heritage-conservation.php">Heritage conservation </a>
+                                  </li>
+                                 
+                                  <li class="dropdown-submenu" >
+                                     <a tabindex="-1" href="Education-and-skill-development.php">Education and Skill Development</a>
+                                  </li>
+								  <li class="dropdown-submenu" >
+                                     <a tabindex="-1" href="Human-resource-management.php">Human Resource Management</a>
+                                  </li>
+								   <li class="dropdown-submenu" >
+                                     <a tabindex="-1" href="Events-and-entertainment-management.php">Events and Entertainment Management</a>
+                                  </li>
+                                  <li class="dropdown-submenu" >
+                                      <a tabindex="-1" href="Socio-economic-assessment.php">Socio-Economic Assessment</a>  
+                                  </li>
+                                  <li class="dropdown-submenu" >
+                                      <a tabindex="-1" href="Health-hygiene-and-water-sanitation.php">Health, hygiene, water sanitation </a>
+                                  </li>
+                                  <li class="dropdown-submenu" >
+                                      <a tabindex="-1" href="e-governance.php">IT and E-governance </a>
+                                  </li>
+								   <li class="dropdown-submenu" >
+                                      <a tabindex="-1" href="Swachh-bharat-mission.php">Swachh Bharat Mission </a>
+                                  </li>
+                                  <li class="dropdown-submenu" >
+                                      <a tabindex="-1" href="other-services.php"> Other Services </a>
+                                  </li>
+                                </ul>
+   	   										</li>
+                          <li id="menu-item-2300" class="menu-item menu-item-type-post_type menu-item-object-page last">
+                            <a href="resblog/index.php">
+                              <span>Blogs</span>
+                            </a>
+                             <ul class=" dropdown-content" role="menu" aria-labelledby="dropdownMenu">
+                                  <li class="dropdown-submenu">
+                                      <a tabindex="-1" href="urban-planning.php">Latest Blogs</a>  
+                                  </li>
+                                  <li class="dropdown-submenu" >
+                                     <a tabindex="-1" href="environmental.php">Latest videos</a>
+                                  </li>
+                                </ul>
+                          </li>
+                          <li id="menu-item-2301" class="menu-item menu-item-type-post_type menu-item-object-page">
+                            <a href="gallery.php"><span>Gallery</span>
+                            </a>
+                          </li>
+                           <li id="menu-item-2301" class="menu-item menu-item-type-post_type menu-item-object-page">
+                                <a href="videos.php"><span>Videos</span>
+                            </a>
+                            </li>
+                          
+                          <li id="menu-item-2300" class="menu-item menu-item-type-post_type menu-item-object-page last">
+                            <a href="career.php">
+                              <span>Join Us</span>
+                            </a>
+                          </li>
+                          <li id="menu-item-2299" class="menu-item menu-item-type-post_type menu-item-object-page last">
+   	   											<a href="contact.php">
+   	   												<span>Contact Us</span>
+   	   											</a>
+   	   										</li>
+   	   									</ul>
+   	   								</nav>
+   	   							</div>
+   	   						</div>
+   	   					</div>
+   	   				</div>
+					
+					
+					
+  
+
+
+
+
+   	   			</div> 
+
+				<div class="icon-bar">
+				  <a href="https://www.facebook.com/citiyanodesolutions/" class="facebook"><i class="fa fa-facebook awesome-social"></i></a> 
+				  <a href="https://twitter.com/citiyanode" class="twitter"><i class="fa fa-twitter awesome-social"></i></a> 
+				<a href="https://www.linkedin.com/in/citiyanode" class="linkedin"><i class="fa fa-linkedin awesome-social "></i></a>
+				 <a href="https://www.instagram.com/citiyanodesolutions/" class="instagram"><i class="fa fa-instagram awesome-social" aria-hidden="true"></i></a>
+				 <a href="https://wa.me/8076298926" class="whatsapp"><i class="fa fa-whatsapp awesome-social" aria-hidden="true"></i></a> 
+				   <a href="tel:+919873684099" class="telephone"><i class="fa fa-phone awesome-social" aria-hidden="true"></i></a> 
+				</div>
+<div class="container containerM">
+<!-- 	<div class="logo">	<a id="logo" href=""><img src="images/logo-citiy.png" ></a>	</div> -->
+					 
+					       <div class="topnav" id="myTopnav">
+  <a href="" class="active" style="display: none;">Menu</a>
+   <a href="index.php">Home</a>
+  <a href="about_us.php">Who we are</a>
+ <div class="dropdown-ace">
+    <button class="dropbtn-ace">What we do 
+      <i class="fa fa-caret-down yoo"></i>
+    </button>
+    <div class="dropdown-contentant">
+      <a href="Urban-planning-and-infrastructure-development.php">Urban planning and Infrastructure Development</a>
+      <a href="Environmental-and-climate-change.php">Environmental and climate Changes </a>
+      <a href="heritage-conservation.php">Heritage conservation</a>
+      <a href="Education-and-skill-development.php">Education and Skill Development</a>
+      <a href="Human-resource-management.php">Human Resource Management</a>
+      <a href="Events-and-entertainment-management.php">Events and Entertainment Management</a>
+      <a href="Socio-economic-assessment.php">Socio-Economic Assessment</a>  
+      <a href="e-governance.php">IT and E-governance </a>
+      <a href="Swachh-bharat-mission.php">Swachh Bharat Mission </a>
+      <a href="other-services.php"> Other Services </a>
+    </div>
+  </div> 
+    <a href="resblog/index.php">Blogs</a>
+    <a href="gallery.php">Gallery</a>
+    <a href="videos.php">Videos</a>
+    <a href="career.php">Join Us</a>
+    <a href="contact.php">Contact Us</a>
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+</div>
+
+<script>
+
+
+
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+
+</script>
+
+				
+			</header>
+		</div>
+	</div>
+</section>
+<!-- 
+            <style type="text/css">
+              
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+       background-color: #020202a3;
+    min-width: 340px;
+    color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding-left: 0px;
+   /* margin-top: 4px;*/
+    border-top: 3px solid #93cb52;
+    border-bottom: 3px solid #93cb52;
+}
+.dropdown-content a:hover {
+    background-color: transparent;
+}
+.dropdown-content a {
+    color: #6e6e6f;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    margin-left: 0px;
+    min-width: 340px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    justify-content: space-between;
+    letter-spacing: 1px;
+    border-bottom: 1px dotted rgba(110, 110, 111, 1);
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+       
+            </style> -->
+
+            <style type="text/css">
+              .dropdown-ace .dropdown-contentant {
+ 
+      height: 508px;
+    top: 53px;
+            </style>
+
+</body>
+</html>

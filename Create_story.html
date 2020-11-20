@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+ 
+<link rel="stylesheet" href="emoji/emojionearea.min.css">
+<script type="text/javascript" src="emoji/emojionearea.min.js"></script>
+
+<style>
+
+#upload_link{
+    text-decoration:none;
+}
+#main-image{
+    display:none
+}
+
+</style>
+</head>
+  <body>
+<script>
+        var counter = 0;
+    </script> 
+    <div class="container text-center">
+        <form id="main-form">
+            <div class="form-group row">
+              
+                <img  src="ravi.jpg" class="mr-3 " style="width:50px; height:50px; border-radius: 50% " >
+                <textarea type="text"  placeholder="create a story......."class="form-control col" id="main-desc">
+                </textarea>
+                <div class="invalid-feedback">
+                    Please write some discription
+
+                </div>
+            </div>
+            <div class="form-group row">
+               
+                
+                <i class="fas fa-photo-video h3 text-primary" id="upload_link">     </i>
+                <input id="main-image" type="file"/>
+              <script>
+                  $(function(){
+          $("#upload_link").on('click', function(e){
+              e.preventDefault();
+              $("#main-image:hidden").trigger('click');
+          });
+          $("#main-image").on('change', function(e){
+              e.preventDefault();
+              var picture = $("#main-image").prop("files")[0];
+          console.log(picture);
+          });
+          
+          });
+        </script>
+            <i class="fas fa-camera-retro h3 text-success ml-4"></i>  
+            <i class="fas fa-map-marked-alt h3 text-warning ml-4" id="locationIcon"></i> 
+            <i class="fas fa-user-tag h3 text-warning ml-4" id="tagIcon"></i>
+
+
+            
+                <div class="input-group-text ml-4" id="magicSearch">  </div><input type="text"  class="form-control col" id="magicInput">
+            
+         
+                <div class="invalid-feedback">
+                    Please choose a valid picture
+
+                </div>
+            </div>
+
+            <div class="card mt-2 overflow-auto" style="width: 18rem;">
+                <ul class="list-group list-group-flush" id="taglist"></ul>
+                </div>
+                <div class="form-group">
+            <img id="selected-image" width="250" height="150" src="#"/>
+                </div>
+                <div class="form-group">
+                    <div class="progress bg-secondary">
+                        <div class="progress-bar bg-success" id="upload-progress" style="width: 0%;">0%</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button id="save-blog" type="button" style="width: 150px; height: 60px;" class="btn btn-light bg-light text-dark">Submit</button>
+
+                </div>
+        </form>
+
+    <textarea id="example1"></textarea>
+    <script type="text/javascript">
+
+
+
+// document.getElementById("locationIcon").addEventListener("click", function(){
+
+//    // event.preventDefault();
+//     console.log('check')
+//   //  var element = document.getElementById("locationIcon");
+//     var element = document.getElementById("magicSearch");
+//   element.classList.add("fas");
+//   element.classList.add("fa-map-marked-alt");
+//    // $("#magicSearch").addClass('fas fa-map-marked-alt');
+// });
+                $(document).ready(function() {
+
+                    $("#magicSearch").html('<i class=" fas fa-map-marked-alt h5 text-warning"></i> ');
+                        document.getElementById("magicInput").placeholder = "Enter Your Location";
+
+                    $("#locationIcon").click(function(event)
+                    {
+                        event.preventDefault();
+                        $("#magicSearch").html('<i class=" fas fa-map-marked-alt h5 text-warning"></i> ');
+                        document.getElementById("magicInput").placeholder = "Enter Your Location";
+                       $("#magicInput").removeClass('tagInput');
+                    })
+                    $("#tagIcon").click(function(event)
+                    {
+                        event.preventDefault();
+                        $("#magicSearch").html('<i class="fas fa-user-tag h5 text-warning"></i> ');
+                        document.getElementById("magicInput").placeholder = "tag to person";
+                        $("#magicInput").addClass('tagInput');
+                    })
+
+
+                    
+/* Search engin part Start*/
+
+const searchInput = document.getElementById('magicInput');
+const list = document.getElementById('taglist');
+
+function setList(group)
+ {
+        clearList();
+        console.log(group.val());
+
+        group.forEach(function(singleGroup)
+                {
+                //  console.log(singleGroup.val());
+                    const item = document.createElement('div');
+                    const image = document.createElement('img');
+        //             item.onclick = hellothis ;                       this is call without parameter
+                    item.addEventListener('click',function ()
+                    {
+                        hellothis(singleGroup.key);
+                    }); 
+            //    item.classList.add('list-group-item');
+                item.classList.add('alert');
+            item.classList.add('alert-info');
+                item.classList.add('h5');
+                image.classList.add('rounded-circle');
+                
+                const text = document.createTextNode(" " + singleGroup.val().firstName);
+                image.width = "40";
+                image.height = "40";
+                image.src = singleGroup.val().profileImg;
+                item.appendChild(image);
+                item.appendChild(text);
+                list.appendChild(item);
+                console.log(list)
+
+                });
+                if (group.length === 0)
+                    { setNoResults()}
+    }
+function clearList() {
+    while(list.firstChild)
+    {
+        list.removeChild(list.firstChild);
+    }   
+}
+function setNoResults() {
+    const item = document.createElement('li');
+            item.classList.add('list-group-item');
+            const text = document.createTextNode('No result found');
+            item.appendChild(text);
+            list.appendChild(item);   
+}
+    searchInput.addEventListener('input',(event)=>{
+    let value = event.target.value;
+  //  console.log(event.target.hasclass('form-control'))
+   const checkTag = $("#magicInput").hasClass('tagInput');
+
+  
+    if (value && value.trim().length > 0 && checkTag ==true) 
+        {
+            value = value.trim().toLowerCase();
+            dbBlogs = firebase.database().ref().child("Users").orderByChild("firstName").startAt(value).endAt(value +"\uf8ff");   //retrieve data from database with specific user ID
+            dbBlogs.on("value",function(blogs)
+            {  setList(blogs);
+            });
+        }
+    else{
+        clearList();
+        }
+    });
+
+
+/* Search engin part End */
+
+
+
+
+
+
+
+                  $("#main-desc").emojioneArea({
+                          pickerPosition: "bottom",
+                          placeholder: "write some thing",
+                          filtersPosition: "bottom"
+          
+                      });
+                });
+              </script>
+    
+    <script>
+        firebase.auth().onAuthStateChanged(function(user)
+        {
+            if(!user)
+            {
+                window.location.href = "signin.html";
+            }
+        });
+    </script>
+   
+</body>
+</html>

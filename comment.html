@@ -1,0 +1,87 @@
+<!-----After Blog Post Area -->
+<html><head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+   
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-storage.js"></script>
+</head>
+<body>
+    
+
+    
+
+
+<div class="row container-fluid bg-3">
+    
+
+    <div  id="comment_box">
+        <div class="media">
+         
+                 <img id="photo1" src="" class="mr-3" >
+                 <div class="media-body">
+                 <h5 class="mt-0">Media heading</h5>
+               
+            <p id="comment">4646</p>
+             
+                 <div class="media mt-3">
+                     <a class="mr-3" href="#">
+                     <img id="photo2" src="" class="mr-3" alt="...">
+                     </a>
+                     <div class="media-body">
+                     <h5 class="mt-0">Media heading</h5>
+                   </p>  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </p>
+                </div>
+                 </div>
+                 </div>
+         </div>
+
+    </div>
+
+</div>
+<br>
+<!-----After Blog Post Area Ends Here-->
+<script src="js/index.js"></script>
+<script>
+
+
+      var commetObj = firebase.database().ref().child("comment_section").child("-M9vs7H2ts1cHhVT09Oh");   //retrieve data from database with specific user ID
+       
+        commetObj.on("value",function(blogs)
+        {
+                    blogs.forEach(function(singleBlog)
+                {
+                            var userID = singleBlog.val().userid;
+                            firebase.database().ref().child("Users").orderByKey().equalTo(userID).on("value",function(dbojb)
+                            {
+                                var ojbt = dbojb.val()
+                                //  image += `${ ojbt[userID].image}`
+                                console.log(singleBlog.val().comment)
+                               console.log(ojbt[userID].image);
+
+
+                               $( "#comment_box" ).append( `<div class="media">
+                                    <img id="photo1" src=${ojbt[userID].image} class="mr-3" width="70px" style="width:50px; height:50px; border-radius: 50% " >
+                                    <div class="media-body">
+                                    <h5 class="mt-0">${ojbt[userID].firstName + ' '+ ojbt[userID].secondName}</h5>
+                                <p id="comment">${singleBlog.val().comment}</p> </div>
+                                 </div>` );
+                   
+
+                            }) 
+        })
+        });
+ 
+  $("#photo1").width("70px").height("70px").css({"border-radius": "50%"});
+  $("#photo2").width("70px").height("70px").css({"border-radius": "50%"});
+
+     
+</script>
+
+
+</body></html>
+

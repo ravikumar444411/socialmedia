@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" 
+    href="https://use.fontawesome.com/releases/v5.6.3/css/fontawesome.css" 
+    integrity="sha384-jLuaxTTBR42U2qJ/pm4JRouHkEDHkVqH0T1nyQXn1mZ7Snycpf6Rl25VBNthU4z0" 
+    crossorigin="anonymous">
+    <style>
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+      }
+
+      #map {
+          border: 2px solid #333;
+          width: 80vw;
+          height: 80vh;
+      }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+
+
+  
+
+  <button> get location</button>
+
+<script>
+
+  var latit,atit;
+  function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, positionError);
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+}
+
+function showPosition(position) {
+  // Success, can use position.
+  console.log("Your position is: " + position);
+  console.log(position);
+  latit = position.coords.latitude;
+  atit = position.coords.longitude;
+}
+
+function positionError(error) {
+  if (error.PERMISSION_DENIED) {
+    console.log("Error: permission denied");
+    // Your custom modal here.
+    showError('Geolocation is not enabled. Please enable to use this feature.');
+  } else {
+    // Handle other kinds of errors.
+    console.log("Other kind of error: " + error);
+  }
+}
+
+function showError(message) {
+  // TODO
+}
+
+getLocation();
+
+console.log(atit,latit);
+      let map;
+      document.addEventListener("DOMContentLoaded", () => {
+          let s = document.createElement("script");
+          document.head.appendChild(s);
+          s.addEventListener("load", () => {
+              //script has loaded
+              console.log("script has loaded");
+              map = new google.maps.Map(document.getElementById("map"), {
+                  center: {
+                      lat: 28.6823331,
+                      lng: 77.0433246
+                  },
+                  zoom: 16,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+              });
+          });
+          s.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAAzdP1BjGcnK2Fr9GsCUK1SuR2xXDYzig`;
+      });
+  </script>
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
